@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>李梦婷 · 材料与化工个人主页</title>
+  <meta name="description" content="李梦婷个人简历、科研成果、论文发表、荣誉奖项与证书展示网站。" />
+  <meta name="theme-color" content="#6f5cff" />
+  <style>
+    :root {
+      --bg: #f5f7fb;
+      --card: rgba(255,255,255,.82);
+      --card-solid: #ffffff;
+      --text: #182033;
+      --muted: #687083;
+      --soft: #8b94aa;
+      --line: rgba(24,32,51,.12);
+      --primary: #6f5cff;
+      --primary-2: #00a7d8;
+      --primary-3: #ff9868;
+      --green: #13a56f;
+      --gold: #d79a1e;
+      --shadow: 0 24px 70px rgba(31,38,83,.13);
+      --soft-shadow: 0 12px 34px rgba(31,38,83,.08);
+      --radius: 28px;
+      --radius-sm: 18px;
+      --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+    }
+    [data-theme="dark"] {
+      --bg: #10131d;
+      --card: rgba(27,31,45,.78);
+      --card-solid: #1b1f2d;
+      --text: #f5f7ff;
+      --muted: #b9c0d4;
+      --soft: #8d96ae;
+      --line: rgba(255,255,255,.12);
+      --shadow: 0 24px 70px rgba(0,0,0,.34);
+      --soft-shadow: 0 12px 40px rgba(0,0,0,.26);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      color: var(--text);
+      line-height: 1.72;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(111,92,255,.22), transparent 36rem),
+        radial-gradient(circle at 86% 14%, rgba(0,167,216,.18), transparent 30rem),
+        radial-gradient(circle at 70% 92%, rgba(255,152,104,.16), transparent 28rem),
+        var(--bg);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    ::selection { background: var(--primary); color: white; }
+    .bg-grid {
+      position: fixed; inset: 0; pointer-events: none; opacity: .22;
+      background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: linear-gradient(to bottom, black, transparent 75%);
+      z-index: -2;
+    }
+    .container { max-width: 1180px; margin: 0 auto; padding: 0 22px; }
+    .topbar {
+      position: sticky; top: 0; z-index: 80;
+      backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px);
+      border-bottom: 1px solid var(--line);
+      background: color-mix(in srgb, var(--bg) 76%, transparent);
+    }
+    .topbar-inner { min-height: 68px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 900; letter-spacing: -.2px; white-space: nowrap; }
+    .brand-mark {
+      width: 38px; height: 38px; border-radius: 14px; display: grid; place-items: center;
+      color: #fff; background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 10px 26px rgba(111,92,255,.28);
+    }
+    .nav { display: flex; align-items: center; justify-content: flex-end; gap: 4px; flex-wrap: wrap; }
+    .nav a, .theme-toggle, .print-btn {
+      border: 1px solid transparent; background: transparent; color: var(--muted);
+      font-size: 14px; padding: 9px 12px; border-radius: 999px; cursor: pointer; transition: .25s ease;
+      font-family: inherit;
+    }
+    .nav a:hover, .theme-toggle:hover {
+      color: var(--text); border-color: var(--line); background: color-mix(in srgb, var(--card-solid) 65%, transparent);
+    }
+    .print-btn {
+      color: white; border: none;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 10px 26px rgba(111,92,255,.22);
+    }
+    .hero {
+      padding: 84px 0 52px; display: grid; grid-template-columns: 1.16fr .84fr; gap: 38px; align-items: center;
+    }
+    .hero-card, .profile-panel, .section-card {
+      background: var(--card); border: 1px solid var(--line); box-shadow: var(--shadow); backdrop-filter: blur(18px);
+    }
+    .hero-card { position: relative; overflow: hidden; padding: 44px; border-radius: 36px; }
+    .hero-card::after {
+      content: ""; position: absolute; width: 260px; height: 260px; right: -90px; top: -100px;
+      background: radial-gradient(circle, rgba(111,92,255,.24), transparent 64%); pointer-events: none;
+    }
+    .label {
+      display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px; border-radius: 999px;
+      background: color-mix(in srgb, var(--primary) 10%, transparent);
+      border: 1px solid color-mix(in srgb, var(--primary) 24%, transparent);
+      color: var(--primary); font-size: 13px; font-weight: 800; margin-bottom: 18px;
+    }
+    h1 { font-size: clamp(42px, 7vw, 78px); line-height: 1.02; letter-spacing: -2.6px; margin-bottom: 18px; }
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2) 62%, var(--primary-3));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero-desc { color: var(--muted); font-size: 18px; max-width: 710px; margin-bottom: 26px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 12px 18px; border-radius: 999px; border: 1px solid var(--line);
+      color: var(--text); background: color-mix(in srgb, var(--card-solid) 74%, transparent);
+      font-size: 14px; font-weight: 800; transition: .25s ease;
+    }
+    .btn.primary { color: white; border: none; background: linear-gradient(135deg, var(--primary), var(--primary-2)); box-shadow: 0 12px 30px rgba(111,92,255,.25); }
+    .btn:hover { transform: translateY(-2px); box-shadow: var(--soft-shadow); }
+    .profile-panel {
+      padding: 30px; border-radius: 36px;
+      background: linear-gradient(160deg, color-mix(in srgb, var(--card-solid) 86%, transparent), color-mix(in srgb, var(--primary) 8%, transparent));
+    }
+    .avatar {
+      width: 118px; height: 118px; border-radius: 34px; margin-bottom: 22px; color: white;
+      display: grid; place-items: center; font-size: 54px; font-weight: 950;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 18px 40px rgba(111,92,255,.28);
+    }
+    .profile-panel h2 { font-size: 25px; margin-bottom: 6px; }
+    .profile-panel > p { color: var(--muted); margin-bottom: 18px; }
+    .contact-list { display: grid; gap: 10px; }
+    .contact-item {
+      display: flex; justify-content: space-between; gap: 18px; padding: 12px 0; border-bottom: 1px solid var(--line);
+      color: var(--muted); font-size: 14px;
+    }
+    .contact-item strong { color: var(--text); text-align: right; }
+    .stats { display: grid; grid-template-columns: repeat(4,1fr); gap: 14px; margin: 10px 0 42px; }
+    .stat {
+      padding: 20px; border-radius: 22px; background: var(--card); border: 1px solid var(--line);
+      box-shadow: var(--soft-shadow); min-height: 112px;
+    }
+    .stat b { font-size: 29px; display: block; line-height: 1.1; letter-spacing: -.5px; }
+    .stat span { color: var(--muted); font-size: 14px; }
+    section { padding: 34px 0; scroll-margin-top: 88px; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 18px; margin-bottom: 18px; }
+    .kicker { color: var(--primary); font-weight: 900; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; }
+    .section-title { font-size: clamp(26px, 3.4vw, 42px); line-height: 1.12; letter-spacing: -1px; margin-top: 6px; }
+    .section-note { max-width: 740px; color: var(--muted); font-size: 15px; }
+    .section-card { padding: 30px; border-radius: var(--radius); }
+    .about-grid { display: grid; grid-template-columns: .95fr 1.05fr; gap: 20px; }
+    .quote {
+      padding: 28px; border-radius: 26px; background: linear-gradient(135deg, color-mix(in srgb, var(--primary) 12%, transparent), color-mix(in srgb, var(--primary-2) 8%, transparent));
+      border: 1px solid color-mix(in srgb, var(--primary) 18%, transparent);
+    }
+    .quote h3 { font-size: 22px; margin-bottom: 12px; }
+    .quote p { color: var(--muted); }
+    .core-list { list-style: none; display: grid; gap: 12px; }
+    .core-list li {
+      position: relative; padding-left: 30px; color: var(--muted);
+    }
+    .core-list li::before {
+      content: "✓"; position: absolute; left: 0; top: 0; width: 21px; height: 21px; border-radius: 999px;
+      display: grid; place-items: center; color: #fff; background: linear-gradient(135deg,var(--primary),var(--primary-2));
+      font-size: 13px; font-weight: 900;
+    }
+    .timeline { display: grid; gap: 18px; }
+    .timeline-item {
+      position: relative; padding: 22px 22px 22px 28px; border-radius: 22px; background: color-mix(in srgb, var(--card-solid) 70%, transparent);
+      border: 1px solid var(--line);
+    }
+    .timeline-item::before { content: ""; position: absolute; left: 0; top: 22px; bottom: 22px; width: 4px; border-radius: 999px; background: linear-gradient(var(--primary), var(--primary-2)); }
+    .time { color: var(--primary); font-size: 13px; font-weight: 900; margin-bottom: 4px; }
+    .timeline-item h3, .research-card h3, .pub h3, .honor-card h3, .skill-card h3 { line-height: 1.35; }
+    .timeline-item p, .research-card p, .pub p, .honor-card p { color: var(--muted); }
+    .strong { color: var(--text) !important; font-weight: 800; }
+    .research-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 16px; }
+    .research-card, .skill-card, .honor-card {
+      padding: 22px; border-radius: 22px; background: color-mix(in srgb, var(--card-solid) 72%, transparent);
+      border: 1px solid var(--line); transition: .25s ease;
+    }
+    .research-card:hover, .skill-card:hover, .honor-card:hover, .cert-figure:hover { transform: translateY(-3px); box-shadow: var(--soft-shadow); }
+    .role { display: inline-flex; color: var(--primary); font-size: 13px; font-weight: 900; margin-bottom: 10px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .chips span {
+      padding: 6px 10px; border-radius: 999px; background: color-mix(in srgb, var(--primary) 9%, transparent);
+      border: 1px solid color-mix(in srgb, var(--primary) 14%, transparent); color: var(--primary); font-size: 12px; font-weight: 800;
+    }
+    .pub-list { display: grid; gap: 14px; }
+    .pub {
+      display: grid; grid-template-columns: 56px 1fr; gap: 16px; padding: 20px; border-radius: 22px;
+      border: 1px solid var(--line); background: color-mix(in srgb, var(--card-solid) 72%, transparent);
+    }
+    .pub-index {
+      width: 48px; height: 48px; border-radius: 16px; display: grid; place-items: center; color: white; font-weight: 950;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+    }
+    .pub a { color: var(--primary); font-weight: 800; }
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+    .filter-btn {
+      font-family: inherit; cursor: pointer; border: 1px solid var(--line); color: var(--muted);
+      background: color-mix(in srgb, var(--card-solid) 72%, transparent); padding: 8px 13px; border-radius: 999px;
+      transition: .25s ease; font-weight: 800;
+    }
+    .filter-btn.active, .filter-btn:hover { background: linear-gradient(135deg, var(--primary), var(--primary-2)); color: #fff; border-color: transparent; }
+    .honor-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 14px; }
+    .level {
+      display: inline-flex; margin-bottom: 10px; font-size: 12px; font-weight: 900; color: #fff;
+      padding: 5px 9px; border-radius: 999px; background: linear-gradient(135deg, var(--primary), var(--primary-2));
+    }
+    .honor-card small { color: var(--soft); font-weight: 800; display: inline-block; margin-top: 12px; }
+    .skills-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 14px; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; }
+    .cert-figure {
+      overflow: hidden; border-radius: 24px; background: var(--card); border: 1px solid var(--line);
+      box-shadow: var(--soft-shadow); cursor: zoom-in; transition: .25s ease;
+    }
+    .cert-figure img { width: 100%; height: 220px; object-fit: cover; background: #fff; }
+    .cert-figure figcaption { padding: 14px 16px 16px; }
+    .cert-figure b { display: block; line-height: 1.3; margin-bottom: 4px; }
+    .cert-figure span { display: block; color: var(--muted); font-size: 13px; }
+    .privacy-note {
+      margin-top: 18px; padding: 14px 16px; border-radius: 18px; color: var(--muted);
+      background: color-mix(in srgb, var(--primary) 7%, transparent); border: 1px dashed color-mix(in srgb, var(--primary) 30%, transparent);
+      font-size: 14px;
+    }
+    footer { padding: 44px 0 64px; color: var(--muted); text-align: center; font-size: 14px; }
+    .modal {
+      position: fixed; inset: 0; z-index: 200; display: none; place-items: center; padding: 24px;
+      background: rgba(0,0,0,.72); backdrop-filter: blur(10px);
+    }
+    .modal.open { display: grid; }
+    .modal-inner { width: min(1100px, 96vw); max-height: 92vh; overflow: auto; border-radius: 24px; background: var(--card-solid); box-shadow: var(--shadow); }
+    .modal-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 18px; border-bottom: 1px solid var(--line); }
+    .modal-top p { color: var(--muted); font-size: 13px; }
+    .modal-close { border: 1px solid var(--line); background: transparent; color: var(--text); border-radius: 999px; padding: 8px 12px; cursor: pointer; font-weight: 900; }
+    .modal img { width: 100%; height: auto; background: white; }
+    .reveal { opacity: 0; transform: translateY(18px); transition: .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    @media (max-width: 980px) {
+      .hero, .about-grid { grid-template-columns: 1fr; }
+      .stats, .skills-grid { grid-template-columns: repeat(2,1fr); }
+      .honor-grid, .gallery-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .research-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 720px) {
+      .container { padding: 0 16px; }
+      .topbar-inner { align-items: flex-start; flex-direction: column; padding: 12px 0; }
+      .nav { justify-content: flex-start; }
+      .hero { padding: 44px 0 32px; }
+      .hero-card { padding: 28px; }
+      h1 { letter-spacing: -1.6px; }
+      .stats, .honor-grid, .gallery-grid, .skills-grid { grid-template-columns: 1fr; }
+      .section-card { padding: 22px; }
+      .pub { grid-template-columns: 1fr; }
+      .cert-figure img { height: 260px; }
+    }
+    @media print {
+      .topbar, .hero-actions, .filters, .modal, .bg-grid { display: none !important; }
+      body { background: #fff !important; color: #111; }
+      .hero, section { padding: 14px 0; }
+      .hero { display: block; }
+      .profile-panel, .hero-card, .section-card, .stat { box-shadow: none; border: 1px solid #ddd; background: #fff; }
+      .reveal { opacity: 1; transform: none; }
+      .gallery-grid { grid-template-columns: repeat(2,1fr); }
+      a { color: #111; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#top"><span class="brand-mark">李</span><span>李梦婷 · Resume</span></a>
+      <nav class="nav" aria-label="主导航">
+        <a href="#about">简介</a>
+        <a href="#education">教育</a>
+        <a href="#research">科研</a>
+        <a href="#honors">荣誉</a>
+        <a href="#skills">技能</a>
+        <a href="#gallery">证书墙</a>
+        <button class="theme-toggle" id="themeToggle" type="button">深色模式</button>
+        <button class="print-btn" type="button" onclick="window.print()">打印/PDF</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" class="container">
+    <section class="hero">
+      <div class="hero-card reveal">
+        <span class="label">Materials & Chemical Engineering · R&D</span>
+        <h1>李梦婷<br><span class="gradient-text">材料与化工</span></h1>
+        <p class="hero-desc">
+          材料与化工硕士在读，面向材料/化工研发、催化材料研发、膜材料与环保材料研发方向。科研训练覆盖材料设计、制备改性、表征分析、性能评价与论文写作，已发表/参与发表 SCI 论文 4 篇。
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#research">查看科研成果</a>
+          <a class="btn" href="#honors">浏览荣誉证书</a>
+          <a class="btn" href="mailto:2747867316@qq.com">邮件联系</a>
+        </div>
+      </div>
+
+      <aside class="profile-panel reveal">
+        <div class="avatar">梦</div>
+        <h2>李梦婷</h2>
+        <p>材料与化工硕士在读 · 中共党员 · 现居南京</p>
+        <div class="contact-list">
+          <div class="contact-item"><span>学校 / 学院</span><strong>南京林业大学 · 化学工程学院</strong></div>
+          <div class="contact-item"><span>专业 / 方向</span><strong>材料与化工 · 化工研发</strong></div>
+          <div class="contact-item"><span>邮箱</span><strong>2747867316@qq.com</strong></div>
+          <div class="contact-item"><span>电话</span><strong>178****0562</strong></div>
+          <div class="contact-item"><span>籍贯 / 居住地</span><strong>河南南阳 / 南京</strong></div>
+        </div>
+      </aside>
+    </section>
+
+    <div class="stats reveal">
+      <div class="stat"><b>4 篇</b><span>SCI 论文发表/参与发表</span></div>
+<div class="stat"><b>1 篇</b><span>研究生阶段第一作者 SCI</span></div>
+<div class="stat"><b>多项</b><span>国家级/省级/校级荣誉</span></div>
+<div class="stat"><b>党支部书记</b><span>学生工作与组织实践</span></div>
+    </div>
+
+    <section id="about">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">About</div>
+          <h2 class="section-title">个人简介</h2>
+        </div>
+        <p class="section-note">以材料化工专业训练为基础，连接催化、光催化、复合膜与环境功能材料研究。</p>
+      </div>
+      <div class="about-grid">
+        <div class="quote section-card reveal">
+          <h3>求职意向</h3>
+          <p>材料/化工研发工程师、催化材料研发、膜材料/环保材料研发、实验技术与项目助理。</p>
+        </div>
+        <div class="section-card reveal">
+          <ul class="core-list">
+            <li>本科化学工程与工艺、硕士材料与化工，研究覆盖金属氧化物催化、光催化、复合膜与环境功能材料。</li>
+<li>已发表/参与发表 SCI 论文 4 篇，其中研究生阶段第一作者论文 1 篇；具备文献调研、实验设计、数据分析和论文写作经验。</li>
+<li>长期担任学生干部和党支部骨干，多次获国家奖学金、校一等奖学金、省级三好学生、优秀共产党员等荣誉。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">Education</div>
+          <h2 class="section-title">教育背景</h2>
+        </div>
+      </div>
+      <div class="section-card reveal">
+        <div class="timeline">
+          
+  <article class="timeline-item">
+    <div class="time">2024.09 - 2027.06</div>
+    <h3>南京林业大学 · 化学工程学院</h3>
+    <p class="strong">材料与化工 · 硕士研究生</p>
+    <p>主修反应工程、工业催化、化学过程分析与合成</p>
+  </article>
+
+  <article class="timeline-item">
+    <div class="time">2020.09 - 2024.07</div>
+    <h3>淮阴师范学院 · 化学化工学院</h3>
+    <p class="strong">化学工程与工艺 · 本科</p>
+    <p>主修化工热力学、化工原理、有机化学、无机化学</p>
+  </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">Research</div>
+          <h2 class="section-title">科研经历</h2>
+        </div>
+        <p class="section-note">围绕金属氧化物催化、光催化 H₂O₂、超润湿油水分离与抗污染复合膜开展科研训练。</p>
+      </div>
+      <div class="research-grid reveal">
+        
+  <article class="research-card">
+    <div class="role">研究生阶段 · 第一作者</div>
+    <h3>等离子体诱导 g-C₃N₄ 带隙调控与缺陷调制用于光催化 H₂O₂ 生产</h3>
+    <p>比较 RF/DBD/GD 等离子体处理对形貌、缺陷化学和电子结构的影响；NCN-RF 比表面积 43.7 m²/g，带隙 2.12 eV，H₂O₂ 产率 1239 μmol g⁻¹ h⁻¹，为原始样品 4.7 倍，循环 3 次保持约 80% 活性。</p>
+    <div class="chips"><span>光催化 H₂O₂</span><span>g-C₃N₄</span><span>等离子体改性</span><span>缺陷调控</span></div>
+  </article>
+
+  <article class="research-card">
+    <div class="role">研究生阶段 · 共同作者</div>
+    <h3>Co-MgO 固溶体界面活性位用于温和 CO₂ 环加成</h3>
+    <p>参与还原调控 Co-MgO 固溶体催化体系研究；催化剂在 90 °C、0.1 MPa CO₂ 下实现环氧氯丙烷环加成 96% 收率，并保持 5 次循环稳定。</p>
+    <div class="chips"><span>CO₂ 环加成</span><span>Co-MgO</span><span>固溶体</span><span>催化稳定性</span></div>
+  </article>
+
+  <article class="research-card">
+    <div class="role">本科阶段 · 共同作者</div>
+    <h3>Fe₃O₄/凹凸棒石仿生涂层超润湿网膜用于油水分离</h3>
+    <p>参与超亲水/水下超疏油网膜构筑；水下油接触角约 157°，水通量高于 3249 L m⁻² h⁻¹，滤液油含量低于 2 mg/L。</p>
+    <div class="chips"><span>油水分离</span><span>超润湿网膜</span><span>凹凸棒石</span><span>环境功能材料</span></div>
+  </article>
+
+  <article class="research-card">
+    <div class="role">本科阶段 · 共同作者</div>
+    <h3>磁场辅助制备抗生物污染 PVDF/m-Pal 复合膜</h3>
+    <p>参与 Fe₃O₄ 改性坡缕石/PVDF 复合膜研究；水通量 343.2 L m⁻² h⁻¹ bar⁻¹，水接触角 71.8°，BSA 通量恢复率显著提升。</p>
+    <div class="chips"><span>PVDF 复合膜</span><span>抗污染</span><span>坡缕石</span><span>磁场辅助</span></div>
+  </article>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">Publications</div>
+          <h2 class="section-title">论文成果</h2>
+        </div>
+      </div>
+      <div class="section-card reveal">
+        <div class="pub-list">
+          
+  <article class="pub">
+    <div class="pub-index">01</div>
+    <div>
+      <h3>Plasma-Induced Bandgap Engineering and Defect Modulation in g-C₃N₄ for Photocatalytic H₂O₂ Production</h3>
+      <p>Mengting Li, et al.</p>
+      <p>ACS Applied Nano Materials, 2026 · <b>第一作者</b> · <a href="https://doi.org/10.1021/acsanm.6c01099" target="_blank" rel="noopener">DOI: 10.1021/acsanm.6c01099</a></p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <div class="pub-index">02</div>
+    <div>
+      <h3>Interfacial Co-OV-Mg active centers in valence-tailored solid solutions for mild and efficient CO₂ cycloaddition</h3>
+      <p>Muhua Chen, Yuqing Wang, Mengting Li, et al.</p>
+      <p>Applied Catalysis A: General, 2026, 711: 120729 · <b>共同作者</b></p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <div class="pub-index">03</div>
+    <div>
+      <h3>Underwater superoleophobic mesh with robust attapulgite coating layer for oil spill recovery</h3>
+      <p>Hengyang Mao, Kai Qiu, Shouyong Zhou, Jiaming Wang, Mengting Li, et al.</p>
+      <p>Colloids and Surfaces A, 2022, 648: 129184 · <b>共同作者</b> · <a href="https://doi.org/10.1016/j.colsurfa.2022.129184" target="_blank" rel="noopener">DOI: 10.1016/j.colsurfa.2022.129184</a></p>
+    </div>
+  </article>
+
+  <article class="pub">
+    <div class="pub-index">04</div>
+    <div>
+      <h3>Magnetic field assisted process for preparing anti-biofouling PVDF membranes</h3>
+      <p>Hengyang Mao, Jiayun Zhu, Shouyong Zhou, Jiaming Wang, Mengting Li, et al.</p>
+      <p>Applied Clay Science, 2023, 239: 106951 · <b>共同作者</b> · <a href="https://doi.org/10.1016/j.clay.2023.106951" target="_blank" rel="noopener">DOI: 10.1016/j.clay.2023.106951</a></p>
+    </div>
+  </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="honors">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">Honors</div>
+          <h2 class="section-title">荣誉奖项</h2>
+        </div>
+        <p class="section-note">整理自简历和荣誉证书材料，覆盖国家级、省级、校级奖学金、竞赛获奖与社会实践荣誉。</p>
+      </div>
+      <div class="filters reveal">
+        <button class="filter-btn active" data-filter="全部">全部</button>
+        <button class="filter-btn" data-filter="国家级">国家级</button>
+        <button class="filter-btn" data-filter="省级">省级</button>
+        <button class="filter-btn" data-filter="校级">校级</button>
+        <button class="filter-btn" data-filter="实践">实践</button>
+      </div>
+      <div class="honor-grid reveal" id="honorGrid">
+        
+  <article class="honor-card" data-level="国家级" data-kind="奖学金">
+    <span class="level">国家级</span>
+    <h3>国家奖学金</h3>
+    <p>2021-2022 学年本科生国家奖学金</p>
+    <small>奖学金</small>
+  </article>
+
+  <article class="honor-card" data-level="国家级" data-kind="奖学金">
+    <span class="level">国家级</span>
+    <h3>国家励志奖学金</h3>
+    <p>2020-2021 学年</p>
+    <small>奖学金</small>
+  </article>
+
+  <article class="honor-card" data-level="省级" data-kind="综合荣誉">
+    <span class="level">省级</span>
+    <h3>江苏省省级“三好学生”</h3>
+    <p>江苏省教育厅、共青团江苏省委表彰</p>
+    <small>综合荣誉</small>
+  </article>
+
+  <article class="honor-card" data-level="省级" data-kind="竞赛">
+    <span class="level">省级</span>
+    <h3>江苏省大学生颗粒科技创新大赛一等奖</h3>
+    <p>第六届 · 基于凹凸棒石纳米颗粒的高效油水分离网膜</p>
+    <small>竞赛</small>
+  </article>
+
+  <article class="honor-card" data-level="省级" data-kind="竞赛">
+    <span class="level">省级</span>
+    <h3>挑战杯“黑科技”专项赛一等奖</h3>
+    <p>第十七届“挑战杯”江苏省选拔赛</p>
+    <small>竞赛</small>
+  </article>
+
+  <article class="honor-card" data-level="省级" data-kind="竞赛">
+    <span class="level">省级</span>
+    <h3>挑战杯省赛三等奖</h3>
+    <p>第十七届“挑战杯”江苏省选拔赛</p>
+    <small>竞赛</small>
+  </article>
+
+  <article class="honor-card" data-level="省级" data-kind="竞赛">
+    <span class="level">省级</span>
+    <h3>化工设计竞赛省特等奖 / 全国三等奖</h3>
+    <p>简历列示竞赛成果</p>
+    <small>竞赛</small>
+  </article>
+
+  <article class="honor-card" data-level="省级" data-kind="竞赛">
+    <span class="level">省级</span>
+    <h3>“创能杯”江苏省节能减排社会实践与科技竞赛三等奖</h3>
+    <p>作品：重力驱动型网膜用于高效油水分离</p>
+    <small>竞赛</small>
+  </article>
+
+  <article class="honor-card" data-level="校级" data-kind="奖学金">
+    <span class="level">校级</span>
+    <h3>校一等奖学金</h3>
+    <p>本科阶段多次获评；研究生阶段研一获校一等奖学金</p>
+    <small>奖学金</small>
+  </article>
+
+  <article class="honor-card" data-level="校级" data-kind="奖学金">
+    <span class="level">校级</span>
+    <h3>恒远精化奖学金</h3>
+    <p>研究生阶段获评</p>
+    <small>奖学金</small>
+  </article>
+
+  <article class="honor-card" data-level="校级" data-kind="奖学金">
+    <span class="level">校级</span>
+    <h3>美德学生奖学金</h3>
+    <p>江苏省教育基金会 / 淮阴师范学院</p>
+    <small>奖学金</small>
+  </article>
+
+  <article class="honor-card" data-level="校级" data-kind="综合荣誉">
+    <span class="level">校级</span>
+    <h3>优秀共产党员</h3>
+    <p>研二七一表彰</p>
+    <small>综合荣誉</small>
+  </article>
+
+  <article class="honor-card" data-level="校级" data-kind="综合荣誉">
+    <span class="level">校级</span>
+    <h3>优秀共青团员</h3>
+    <p>淮阴师范学院优秀共青团员 / 研一优秀共青团员</p>
+    <small>综合荣誉</small>
+  </article>
+
+  <article class="honor-card" data-level="校级" data-kind="综合荣誉">
+    <span class="level">校级</span>
+    <h3>优秀毕业生</h3>
+    <p>本科阶段综合荣誉</p>
+    <small>综合荣誉</small>
+  </article>
+
+  <article class="honor-card" data-level="校级" data-kind="竞赛">
+    <span class="level">校级</span>
+    <h3>中国国际“互联网+”大学生创新创业大赛校赛三等奖</h3>
+    <p>2024 年 · 超浸润油水分离材料与装备</p>
+    <small>竞赛</small>
+  </article>
+
+  <article class="honor-card" data-level="校级" data-kind="竞赛">
+    <span class="level">校级</span>
+    <h3>大学生职业生涯规划大赛一等奖</h3>
+    <p>淮阴师范学院第十五届大学生职业生涯规划大赛</p>
+    <small>竞赛</small>
+  </article>
+
+  <article class="honor-card" data-level="实践" data-kind="实践">
+    <span class="level">实践</span>
+    <h3>暑期“三下乡”社会实践先进个人</h3>
+    <p>参与社会实践并获先进个人</p>
+    <small>实践</small>
+  </article>
+
+  <article class="honor-card" data-level="实践" data-kind="实践">
+    <span class="level">实践</span>
+    <h3>十佳青年志愿者 / 生涯嘉年华志愿者</h3>
+    <p>长期参与志愿服务与校园活动</p>
+    <small>实践</small>
+  </article>
+      </div>
+    </section>
+
+    <section id="experience">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">Leadership</div>
+          <h2 class="section-title">学生工作与实践</h2>
+        </div>
+      </div>
+      <div class="section-card reveal">
+        <div class="timeline">
+          
+  <article class="timeline-item">
+    <div class="time">2024.09 至今</div>
+    <h3>班级党支部书记</h3>
+    <p>协助党员发展材料整理、主题党日、组织生活与支部日常维护。</p>
+  </article>
+
+  <article class="timeline-item">
+    <div class="time">2020.09 - 2024.07</div>
+    <h3>班级学习委员</h3>
+    <p>负责学风建设、课程考试信息传达和师生沟通，长期服务班级学习事务。</p>
+  </article>
+
+  <article class="timeline-item">
+    <div class="time">本科阶段</div>
+    <h3>校园组织与社会实践</h3>
+    <p>参与校监察评估中心、就业创业联盟、暑期“三下乡”和志愿服务，获先进个人、十佳青年志愿者等荣誉。</p>
+  </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">Skills</div>
+          <h2 class="section-title">专业技能与证书</h2>
+        </div>
+        <p class="section-note">科研阶段覆盖“材料设计 - 表征分析 - 性能评价 - 论文写作”完整流程。</p>
+      </div>
+      <div class="skills-grid reveal">
+        
+  <article class="skill-card">
+    <h3>材料制备</h3>
+    <div class="chips"><span>水热/沉淀</span><span>煅烧还原</span><span>等离子体改性</span><span>复合膜制备</span></div>
+  </article>
+
+  <article class="skill-card">
+    <h3>性能评价</h3>
+    <div class="chips"><span>CO₂ 环加成</span><span>光催化 H₂O₂</span><span>膜分离测试</span><span>抗污染测试</span></div>
+  </article>
+
+  <article class="skill-card">
+    <h3>表征分析</h3>
+    <div class="chips"><span>XRD</span><span>XPS</span><span>SEM/TEM</span><span>BET</span><span>UV-vis</span><span>FTIR</span><span>EPR</span></div>
+  </article>
+
+  <article class="skill-card">
+    <h3>证书能力</h3>
+    <div class="chips"><span>CET-4 471</span><span>CET-6 457</span><span>全国计算机二级</span><span>普通话二甲</span><span>高中化学教师资格证</span></div>
+  </article>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="section-head reveal">
+        <div>
+          <div class="kicker">Evidence</div>
+          <h2 class="section-title">荣誉证书墙</h2>
+        </div>
+        <p class="section-note">展示适合公开浏览的代表性证书图片。含照片、准考证号、成绩单等更敏感的材料已转为文字摘要或不展示原图。</p>
+      </div>
+      <div class="gallery-grid reveal">
+        
+  <figure class="cert-figure" data-title="国家奖学金荣誉证书" data-meta="2021-2022 学年 · 本科生国家奖学金" data-img="assets/certificates/national_scholarship_2021_2022.jpg">
+    <img src="assets/certificates/national_scholarship_2021_2022.jpg" alt="国家奖学金荣誉证书" loading="lazy" />
+    <figcaption><b>国家奖学金荣誉证书</b><span>2021-2022 学年 · 本科生国家奖学金</span></figcaption>
+  </figure>
+
+  <figure class="cert-figure" data-title="国家励志奖学金" data-meta="2020-2021 学年" data-img="assets/certificates/national_inspirational_scholarship.jpg">
+    <img src="assets/certificates/national_inspirational_scholarship.jpg" alt="国家励志奖学金" loading="lazy" />
+    <figcaption><b>国家励志奖学金</b><span>2020-2021 学年</span></figcaption>
+  </figure>
+
+  <figure class="cert-figure" data-title="江苏省省级“三好学生”" data-meta="2021-2022 学年 · 江苏省教育厅/共青团江苏省委" data-img="assets/certificates/jiangsu_excellent_student.jpg">
+    <img src="assets/certificates/jiangsu_excellent_student.jpg" alt="江苏省省级“三好学生”" loading="lazy" />
+    <figcaption><b>江苏省省级“三好学生”</b><span>2021-2022 学年 · 江苏省教育厅/共青团江苏省委</span></figcaption>
+  </figure>
+
+  <figure class="cert-figure" data-title="校一等奖学金" data-meta="2020-2021 学年" data-img="assets/certificates/first_class_scholarship_2020.jpg">
+    <img src="assets/certificates/first_class_scholarship_2020.jpg" alt="校一等奖学金" loading="lazy" />
+    <figcaption><b>校一等奖学金</b><span>2020-2021 学年</span></figcaption>
+  </figure>
+
+  <figure class="cert-figure" data-title="校一等奖学金" data-meta="2022-2023 学年第一学期" data-img="assets/certificates/first_class_scholarship_2022.jpg">
+    <img src="assets/certificates/first_class_scholarship_2022.jpg" alt="校一等奖学金" loading="lazy" />
+    <figcaption><b>校一等奖学金</b><span>2022-2023 学年第一学期</span></figcaption>
+  </figure>
+
+  <figure class="cert-figure" data-title="美德学生奖学金" data-meta="2022 年 · 江苏省教育基金会 / 淮阴师范学院" data-img="assets/certificates/virtue_scholarship.jpg">
+    <img src="assets/certificates/virtue_scholarship.jpg" alt="美德学生奖学金" loading="lazy" />
+    <figcaption><b>美德学生奖学金</b><span>2022 年 · 江苏省教育基金会 / 淮阴师范学院</span></figcaption>
+  </figure>
+
+  <figure class="cert-figure" data-title="江苏省大学生颗粒科技创新大赛一等奖" data-meta="第六届 · 项目：基于凹凸棒石纳米颗粒的高效油水分离网膜" data-img="assets/certificates/particle_innovation_first_prize.jpg">
+    <img src="assets/certificates/particle_innovation_first_prize.jpg" alt="江苏省大学生颗粒科技创新大赛一等奖" loading="lazy" />
+    <figcaption><b>江苏省大学生颗粒科技创新大赛一等奖</b><span>第六届 · 项目：基于凹凸棒石纳米颗粒的高效油水分离网膜</span></figcaption>
+  </figure>
+
+  <figure class="cert-figure" data-title="挑战杯“黑科技”专项赛一等奖" data-meta="2021 年 · 第十七届“挑战杯”江苏省选拔赛" data-img="assets/certificates/challenge_cup_black_tech_first_prize.jpg">
+    <img src="assets/certificates/challenge_cup_black_tech_first_prize.jpg" alt="挑战杯“黑科技”专项赛一等奖" loading="lazy" />
+    <figcaption><b>挑战杯“黑科技”专项赛一等奖</b><span>2021 年 · 第十七届“挑战杯”江苏省选拔赛</span></figcaption>
+  </figure>
+
+  <figure class="cert-figure" data-title="挑战杯省赛三等奖" data-meta="2021 年 · 第十七届“挑战杯”江苏省选拔赛" data-img="assets/certificates/challenge_cup_provincial_third_prize.jpg">
+    <img src="assets/certificates/challenge_cup_provincial_third_prize.jpg" alt="挑战杯省赛三等奖" loading="lazy" />
+    <figcaption><b>挑战杯省赛三等奖</b><span>2021 年 · 第十七届“挑战杯”江苏省选拔赛</span></figcaption>
+  </figure>
+
+  <figure class="cert-figure" data-title="中国国际“互联网+”大学生创新创业大赛校赛三等奖" data-meta="2024 年 · 项目：超浸润油水分离材料与装备" data-img="assets/certificates/internet_plus_third_prize.jpg">
+    <img src="assets/certificates/internet_plus_third_prize.jpg" alt="中国国际“互联网+”大学生创新创业大赛校赛三等奖" loading="lazy" />
+    <figcaption><b>中国国际“互联网+”大学生创新创业大赛校赛三等奖</b><span>2024 年 · 项目：超浸润油水分离材料与装备</span></figcaption>
+  </figure>
+
+  <figure class="cert-figure" data-title="“创能杯”江苏省节能减排社会实践与科技竞赛三等奖" data-meta="2021 年 · 重力驱动型网膜用于高效油水分离" data-img="assets/certificates/energy_saving_cup_third_prize.jpg">
+    <img src="assets/certificates/energy_saving_cup_third_prize.jpg" alt="“创能杯”江苏省节能减排社会实践与科技竞赛三等奖" loading="lazy" />
+    <figcaption><b>“创能杯”江苏省节能减排社会实践与科技竞赛三等奖</b><span>2021 年 · 重力驱动型网膜用于高效油水分离</span></figcaption>
+  </figure>
+
+  <figure class="cert-figure" data-title="淮阴师范学院优秀共青团员" data-meta="共青团淮阴师范学院委员会" data-img="assets/certificates/excellent_league_member.jpg">
+    <img src="assets/certificates/excellent_league_member.jpg" alt="淮阴师范学院优秀共青团员" loading="lazy" />
+    <figcaption><b>淮阴师范学院优秀共青团员</b><span>共青团淮阴师范学院委员会</span></figcaption>
+  </figure>
+
+  <figure class="cert-figure" data-title="暑期“三下乡”社会实践先进个人" data-meta="淮阴师范学院 2021 年暑期社会实践" data-img="assets/certificates/sanxiaxiang_advanced_individual.jpg">
+    <img src="assets/certificates/sanxiaxiang_advanced_individual.jpg" alt="暑期“三下乡”社会实践先进个人" loading="lazy" />
+    <figcaption><b>暑期“三下乡”社会实践先进个人</b><span>淮阴师范学院 2021 年暑期社会实践</span></figcaption>
+  </figure>
+
+  <figure class="cert-figure" data-title="生涯嘉年华志愿者证书" data-meta="2021 年 · 生涯嘉年华志愿服务" data-img="assets/certificates/career_carnival_volunteer.jpg">
+    <img src="assets/certificates/career_carnival_volunteer.jpg" alt="生涯嘉年华志愿者证书" loading="lazy" />
+    <figcaption><b>生涯嘉年华志愿者证书</b><span>2021 年 · 生涯嘉年华志愿服务</span></figcaption>
+  </figure>
+
+  <figure class="cert-figure" data-title="论文成果展示" data-meta="Colloids and Surfaces A 论文成果报道截图" data-img="assets/certificates/publication_news.jpg">
+    <img src="assets/certificates/publication_news.jpg" alt="论文成果展示" loading="lazy" />
+    <figcaption><b>论文成果展示</b><span>Colloids and Surfaces A 论文成果报道截图</span></figcaption>
+  </figure>
+      </div>
+      <div class="privacy-note reveal">
+        隐私处理：网页中手机号已脱敏；未公开身份证、学生证、四六级成绩单原图、计算机等级证书照片页等敏感材料。部分证书编号区域已做遮盖处理。
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 李梦婷 · 材料与化工个人主页 · 更新于 2026-07-09 · 静态 HTML 可部署版</p>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-inner">
+      <div class="modal-top">
+        <div>
+          <h3 id="modalTitle">证书</h3>
+          <p id="modalMeta"></p>
+        </div>
+        <button class="modal-close" id="modalClose" type="button">关闭</button>
+      </div>
+      <img id="modalImg" src="" alt="" />
+    </div>
+  </div>
+
+  <script>
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeToggle');
+    const saved = localStorage.getItem('lmt-theme') || 'light';
+    root.dataset.theme = saved;
+    themeBtn.textContent = saved === 'dark' ? '浅色模式' : '深色模式';
+    themeBtn.addEventListener('click', () => {
+      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      localStorage.setItem('lmt-theme', next);
+      themeBtn.textContent = next === 'dark' ? '浅色模式' : '深色模式';
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const honorCards = document.querySelectorAll('.honor-card');
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const f = btn.dataset.filter;
+        honorCards.forEach(card => {
+          const visible = f === '全部' || card.dataset.level === f;
+          card.style.display = visible ? '' : 'none';
+        });
+      });
+    });
+
+    const modal = document.getElementById('modal');
+    const modalImg = document.getElementById('modalImg');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalMeta = document.getElementById('modalMeta');
+    const modalClose = document.getElementById('modalClose');
+    document.querySelectorAll('.cert-figure').forEach(fig => {
+      fig.addEventListener('click', () => {
+        modalImg.src = fig.dataset.img;
+        modalImg.alt = fig.dataset.title;
+        modalTitle.textContent = fig.dataset.title;
+        modalMeta.textContent = fig.dataset.meta;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden','false');
+      });
+    });
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden','true');
+      modalImg.src = '';
+    }
+    modalClose.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+  </script>
+</body>
+</html>
